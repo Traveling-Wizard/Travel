@@ -10,7 +10,7 @@ import {
 import Home from './pages/Home.tsx';
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route element={<Home />} />)
+  createRoutesFromElements(<Route path='/' element={<Home />} />)
 );
 
 function App() {
