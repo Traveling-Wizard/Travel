@@ -8,6 +8,6 @@
     "noEmit": false,
     "resolveJsonModule": true
   },
-  "include": ["client/**/*", "server/**/*"],
+  "include": ["src/**/*", "server/**/*"],
   "exclude": ["dist", "node_modules"]
 }
