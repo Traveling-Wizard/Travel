@@ -1,5 +1,17 @@
 {
+  "name": "Reinforcement Project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"NODE_ENV=development nodemon ./server/server.ts\"",
+    "build": "NODE_ENV=production webpack",
+    "frontend": "NODE_ENV=development webpack-dev-server --open --hot --progress --color",
+    "server": "NODE_ENV=production nodemon ./server/server.ts"
+  },
   "dependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -19,6 +31,7 @@
     "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
     "nodemon": "^2.0.22",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
