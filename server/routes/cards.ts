@@ -1,16 +1,16 @@
-const express = require('express');
-// require in the cardController
+import express, { Request, Response } from 'express';
+import cardController from '../controllers/cardController';
 
 const router = express.Router();
 
-router.get('/', (req: any, res: any) => {});
+router.get('/', (req: Request, res: Response) => {});
 
-router.post('/', (req: any , res: any) => {});
+router.post('/', (req: Request, res: Response) => {});
 
-router.patch('/', (req: any , res: any) => {});
+router.patch('/', (req: Request, res: Response) => {});
 
-router.delete('/', (req: any , res: any) => {});
+router.delete('/', (req: Request, res: Response) => {});
 
-router.use((req: any , res: any) => res.status(404).send('Invalid endpoint'));
+router.use((req: Request, res: Response) => res.status(404).send('Invalid endpoint'));
 
 module.exports = router;
