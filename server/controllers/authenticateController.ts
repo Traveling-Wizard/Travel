@@ -11,9 +11,9 @@ export const authenticateToken = (
   res: Response,
   next: NextFunction
 ) => {
-    //incoming auth token is extracted from request headers
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+  //incoming auth token is extracted cookies
+  const token = req.cookies.jwtToken;
+
 
   try {
     // If token does not exist, run global error handler
@@ -43,33 +43,32 @@ export const generateToken = (
   res: Response,
   next: NextFunction
 ) => {
-    //obtain username from req body
-  const { username } = req.body;
+  //obtain username from req body
+  const { user_id } = req.body;
 
   try {
     // Generate token passing in username and secret
-    const token = jwt.sign(username, process.env.JWT_SECRET, {
+    const token = jwt.sign({user_id: user_id}, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
-
-    //send token back as json
-    res.json({ token });
-
+    res.cookie('jwtToken', token, {
+      httpOnly: true,
+      maxAge: 3600000
+    });
 
     next();
   } catch (err) {
     return next({
       log: 'Error in generateToken middleware function',
-      status: 500,
+      status: 400,
       message: 'Failed to generate token',
     });
   }
 };
 
 const authenticateController = {
-    authenticateToken,
-    generateToken
-  };
-  
+  authenticateToken,
+  generateToken,
+};
 
 export default authenticateController;
