@@ -5,10 +5,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "noEmit": true,
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
-    "typeRoots": ["./types", "./node_modules/@types" ],
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "include": ["src/**/*", "server/**/*"],
   "exclude": ["dist", "node_modules"]

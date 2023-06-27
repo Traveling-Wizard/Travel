@@ -1,5 +1,5 @@
 //  Dependancies
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 import {
   BrowserRouter,
   createBrowserRouter,
@@ -9,29 +9,34 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Home from './pages/Home.js';
+import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
-function App() {
-  // If any state is needed at this top-most level - put here:
-  // Username/Password? 
-
-  return (
-    <>  
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </>
-  )
-
-}
-
-// const router = createBrowserRouter(
-//   createRoutesFromElements(<Route path='/' element={<Home />} />)
-// );
 // function App() {
-//   return <RouterProvider router={router} />;
+// If any state is needed at this top-most level - put here:
+// Username/Password?
+
+// return (
+//   <>
+//     <Routes>
+//       <Route path='/' element={<Home />} />
+//       <Route path='*' element={<NotFound />} />
+//     </Routes>
+//   </>
+// );
 // }
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route path='/' element={<Home />} />
+      <Route path='*' element={<NotFound />} />
+    </Route>
+  )
+);
+
+function App() {
+  return <RouterProvider router={router} />;
+}
 
 export default App;

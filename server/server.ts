@@ -1,6 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import cardRouter from './routes/cards';
+import userRouter from './routes/userRouter';
 
 const port: number = 5050;
 const app = express();
@@ -8,6 +10,9 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+
+app.use('/users', userRouter);
+app.use('/cards', cardRouter);
 
 app.use(
   (
@@ -30,3 +35,5 @@ app.use(
     return res.status(errorObj.status).json(errorObj.message);
   }
 );
+
+app.listen(port, () => console.log(`Listening on ${port}`));
