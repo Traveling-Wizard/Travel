@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "CommonJS",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "noEmit": false,
-    "resolveJsonModule": true
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "typeRoots": ["./types", "./node_modules/@types" ],
   },
-  "include": ["src", "server"],
+  "include": ["src/**/*", "server/**/*"],
   "exclude": ["dist", "node_modules"]
 }
