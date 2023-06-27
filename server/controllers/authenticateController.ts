@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { Secret } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 
@@ -14,7 +14,6 @@ export const authenticateToken = (
   //incoming auth token is extracted cookies
   const token = req.cookies.jwtToken;
 
-
   try {
     // If token does not exist, run global error handler
     if (!token) {
@@ -25,7 +24,7 @@ export const authenticateToken = (
       });
     }
     //if token is valid
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as Secret);
     //store decoded token paylod in res.locals.user
     res.locals.user = decoded;
     next();
@@ -48,12 +47,16 @@ export const generateToken = (
 
   try {
     // Generate token passing in username and secret
-    const token = jwt.sign({user_id: user_id}, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
+    const token = jwt.sign(
+      { user_id: user_id },
+      process.env.JWT_SECRET as Secret,
+      {
+        expiresIn: '1h',
+      }
+    );
     res.cookie('jwtToken', token, {
       httpOnly: true,
-      maxAge: 3600000
+      maxAge: 3600000,
     });
 
     next();
