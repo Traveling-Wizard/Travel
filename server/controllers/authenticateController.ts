@@ -11,7 +11,7 @@ export const authenticateToken = (
   res: Response,
   next: NextFunction
 ) => {
-    //incoming auth token is extracted from request header
+    //incoming auth token is extracted from request headers
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
