@@ -22,7 +22,10 @@ module.exports = {
 
     headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
-      '/cards': {
+      '/cards/**': {
+        target: 'http://localhost:5050/',
+      },
+      '/users/**': {
         target: 'http://localhost:5050/',
       },
       '/static/**': {
