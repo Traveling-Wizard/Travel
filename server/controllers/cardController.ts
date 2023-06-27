@@ -23,7 +23,7 @@ const cardController: CardController = {
       return next({
         log: 'Error in cardController.getCards method',
         status: 400,
-        message: 'Error while loading items',
+        message: 'Error while loading cards',
       });
     }
   },
@@ -39,7 +39,7 @@ const cardController: CardController = {
       return next({
         log: 'Error in cardController.createCard method',
         status: 400,
-        message: 'Error while loading items',
+        message: 'Error while creating card',
       });
     }
   },
@@ -55,12 +55,26 @@ const cardController: CardController = {
       return next({
         log: 'Error in cardController.updateCard method',
         status: 400,
-        message: 'Error while loading items',
+        message: 'Error while updating card',
       });
     }
   },
 
-  deleteCard: async (req: Request, res: Response, next: NextFunction) => {},
+  deleteCard: async (req: Request, res: Response, next: NextFunction) => {
+    const { user_id, card_id } = req.body;
+    const deleteCardQuery =
+      'DELETE FROM user_cards WHERE user_id = $1 AND card_id = $2;';
+    try {
+      await db.query(deleteCardQuery);
+      return next();
+    } catch (err) {
+      return next({
+        log: 'Error in cardController.deleteCard method',
+        status: 400,
+        message: 'Error while deleting card',
+      });
+    }
+  },
 };
 
 export default cardController;
