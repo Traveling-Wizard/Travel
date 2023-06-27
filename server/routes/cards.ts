@@ -3,13 +3,21 @@ import cardController from '../controllers/cardController';
 
 const router = express.Router();
 
-router.get('/', (req: Request, res: Response) => {});
+router.get('/', cardController.getCards, (req: Request, res: Response) => {
+  res.status(200).json(res.locals.cards);
+});
 
-router.post('/', (req: Request, res: Response) => {});
+router.post('/', cardController.createCard, (req: Request, res: Response) => {
+  res.status(200).json({ message: 'Successfully created card'});
+});
 
-router.patch('/', (req: Request, res: Response) => {});
+router.patch('/', cardController.updateCard, (req: Request, res: Response) => {
+  res.status(200).json({ message: 'Successfully updated card'});
+});
 
-router.delete('/', (req: Request, res: Response) => {});
+router.delete('/', cardController.deleteCard, (req: Request, res: Response) => {
+  res.status(200).json({ message: 'Successfully deleted card'});
+});
 
 router.use((req: Request, res: Response) => res.status(404).send('Invalid endpoint'));
 
