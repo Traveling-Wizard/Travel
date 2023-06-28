@@ -9,7 +9,7 @@ function Home(): JSX.Element {
     <>
       <Navbar />
       {/* <div>Hello World!</div>; */}
-      <Overview />
+      <Overview />  
     </>
     
   )
