@@ -42,7 +42,7 @@ export const authenticateToken = (
   }
 };
 
-export const generateToken = (
+export const generateToken = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -56,12 +56,11 @@ export const generateToken = (
       expiresIn: '1h',
     });
     console.log('creation of token value ' + token);
-    res.cookie('jwtToken', token, {
-      httpOnly: true,
+    await res.cookie('jwtToken', token, {
       maxAge: 3600000,
     });
 
-    next();
+    return next();
   } catch (err) {
     return next({
       log: 'Error in generateToken middleware function',
