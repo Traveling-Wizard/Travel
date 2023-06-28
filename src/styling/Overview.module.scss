@@ -1,0 +1,15 @@
+@import '_colors.scss';
+
+.blurb {
+  color: black;
+  text-shadow: 1px 1px;
+  text-align: center;
+}
+
+.section {
+  // background-color: rgb(26, 173, 210);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
