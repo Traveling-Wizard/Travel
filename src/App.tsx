@@ -11,6 +11,7 @@ import {
 
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import React from 'react';
 
 // function App() {
 // If any state is needed at this top-most level - put here:
