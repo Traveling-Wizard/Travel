@@ -67,6 +67,14 @@ const Dashboard = () => {
       <br /><br />
 
       <Transfer_Partner /> 
+      <br /> <br />
+      <div className='dash-footer'>
+      <img
+          src={require(`../../assets/airplane.png`).default}
+          alt={'plane_logo'}
+          className="footer-plane"
+        />
+      </div>
     </>
   )
 
