@@ -15,7 +15,6 @@ export const authenticateToken = (
   // Incoming auth token is extracted from cookies
   const token = req.cookies.jwtToken;
 
-
   // If token does not exist, run global error handler
   if (!token) {
     return next({
@@ -27,7 +26,9 @@ export const authenticateToken = (
 
   try {
     // If token is valid
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as Secret) as { user_id: string };
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as Secret) as {
+      user_id: string;
+    };
     // Store decoded token payload in res.locals
     res.locals.userToken = decoded;
 
@@ -47,15 +48,14 @@ export const generateToken = (
   next: NextFunction
 ) => {
   // Obtain user_id from req body
-  const { user_id } = req.body;
-    console.log(user_id);
+  const { user_id } = res.locals.user;
   try {
     console.log('Attempting to generate token');
-    
+
     const token = jwt.sign({ user_id }, process.env.JWT_SECRET as Secret, {
       expiresIn: '1h',
     });
-    console.log("creation of token value " + token);
+    console.log('creation of token value ' + token);
     res.cookie('jwtToken', token, {
       httpOnly: true,
       maxAge: 3600000,

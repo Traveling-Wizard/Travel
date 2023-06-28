@@ -28,7 +28,7 @@ import { TypeAnimation } from 'react-type-animation'
   const CURSOR_CLASS_NAME = 'type';
   const ref = React.createRef<HTMLSpanElement>();
   const showCursorAnimation = (show: boolean) => {
-    if(!ref.current) {
+    if(!ref.current) {  
       return;
     }
 
