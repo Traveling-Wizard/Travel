@@ -51,7 +51,7 @@ const Dashboard = () => {
         className='addModalBtn' 
         onClick={() => {setAddModal(true)}}
       >
-        "ADD" Modal Button
+        "ADD" Modal Button!
       </button>
       <br /> <br />
       {/* If user has any existing cards then render them, else not */}
