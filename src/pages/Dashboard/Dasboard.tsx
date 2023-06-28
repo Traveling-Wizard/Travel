@@ -19,7 +19,7 @@ const Dashboard = () => {
   const [cards, setCards] = useState<Array<any>>([
     { card_name: 'Capital One', points: 50000, card_id: 3 },
   ]);
-  const [addModal, setAddModal] = useState<boolean>(true); // set to false initially because we want the modal to be closed initially
+  const [addModal, setAddModal] = useState<boolean>(false); // set to false initially because we want the modal to be closed initially
 
   // function addCard(card: ReactElement) {
   //   setCards((newCard) => {
@@ -76,19 +76,17 @@ const Dashboard = () => {
         <Modal_Add closeModal={setAddModal} setCards={setCards} cards={cards} />
       )}
       <Query />
-
-      <br /><br />
-
-      <Transfer_Partner /> 
+      <br />
+      <br />
+      <Transfer_Partner />
       <br /> <br />
       <div className='dash-footer'>
-      <img
+        <img
           src={require(`../../assets/airplane.png`).default}
           alt={'plane_logo'}
-          className="footer-plane"
+          className='footer-plane'
         />
       </div>
-
     </>
   );
 };
