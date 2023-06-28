@@ -37,18 +37,20 @@ function LoginModal(): JSX.Element {
   };
 
   return (
-    <div>
-      <h3 className={styles.failMessage}>{retryString}</h3>
-      <h2 className={styles.mainMessage}>Welcome Back Traveler</h2>
-      <form onSubmit={handleLogin} className={styles.box}>
-        <input type='text' placeholder='Username' className={styles.input} />
-        <input
-          type='password'
-          placeholder='Password'
-          className={styles.input}
-        />
-        <button className={styles.button}>Login</button>
-      </form>
+    <div className={styles.center}>
+      <div className={styles.user}>
+        {/* <h3 className={styles.failMessage}>{retryString}</h3> */}
+        <h2 className={styles.mainMessage}>Welcome Back Traveler</h2>
+        <form onSubmit={handleLogin} className={styles.box}>
+          <input type='text' placeholder='Username' className={styles.input} />
+          <input
+            type='password'
+            placeholder='Password'
+            className={styles.input}
+          />
+          <button className={styles.button}>Login</button>
+        </form>
+      </div>
     </div>
   );
 }

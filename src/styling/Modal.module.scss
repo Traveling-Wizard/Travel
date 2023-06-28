@@ -5,22 +5,56 @@
 }
 
 .mainMessage {
-  color: blue;
+  color: $color6;
+  text-align: center;
+}
+
+.center {
+  position: absolute;
+  right: 600px;
+  top: 50px;
+  min-height: 100vh;
+}
+
+.user {
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(39, 38, 38);
+  box-shadow:rgb(39, 38, 38);
+  padding: 20px;
+  width: 200px;
+  background-color: $color1;
 }
 
 .box {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
 }
 
 .input {
+  margin-bottom: 5px;
+  outline: 0;
+  border-width: 0 0 2px;
   border-radius: 2px;
-  border: 0;
+  border-color:rgb(39, 38, 38);
 }
 
 .button {
   border: 0;
   border-radius: 2px;
-  background-color: greenyellow;
+  background-color: $color1;
+  border-radius: 10px;
+  box-shadow: rgba(63, 55, 209, 0.2) 0 -25px 18px -14px inset,rgba(45, 63, 166, 0.15) 0 1px 2px,rgba(45, 79, 180, 0.15) 0 2px 4px,rgba(43, 92, 172, 0.15) 0 4px 8px,rgba(34, 77, 156, 0.15) 0 8px 16px,rgba(35, 71, 138, 0.15) 0 16px 32px;
+  color: $color6;
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  margin: 2px;
+  font-size: 16px;
 }

@@ -1,37 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import styles from '../styling/Home.module.scss';
 import Overview from './Home/Overview';
 import Navbar from './Home/Navbar';
+import Footer from './Home/Footer';
+import LoginModal from '../components/LoginModal';
+import SignupModal from '../components/SignupModal';
 
 function Home(): JSX.Element {
+  const [loginModal, setLoginModal] = useState<boolean>(false);
+  const [signupModal, setSignupModal] = useState<boolean>(false);
+
   return (
-    <div className='Home'>
-      <button type='button' onClick={() => this.setState}>
-        Login
-      </button>
-      <button type='button' onClick={() => this.setState}>
-        Signup
-      </button>
-      <div className='blurb'>
-        <p>
-          Step into a world of magic and convenience with
-          <strong> Wanderlust Wizard</strong> - your enchanted grimoire for
-          mastering the arcane art of credit card points management! This
-          bewitching app will transfigure your mundane experience of tracking
-          reward points into an extraordinary adventure. By conjuring a detailed
-          map of your treasure troves across multiple mystical credit card
-          kingdoms, Wanderlust Wizard effortlessly deciphers the riddle of
-          transfer ratios. Like an all-seeing crystal ball, the app reveals the
-          secret alliances of flight partners each banking realm has pact with,
-          guiding you to the most bountiful aerial chariots. No longer shall you
-          be lost in the labyrinth of numbers and affiliations! With Wanderlust
-          Wizard, take control of your points like a true wizard, weaving them
-          into the most rewarding travel spells. Embark on this enchanting
-          journey, where you're not merely collecting points - you're
-          spellbinding them!
-        </p>
+    <>
+      <Navbar loginModal={loginModal} signupModal={signupModal} setLoginModal={setLoginModal} setSignupModal={setSignupModal}/>
+      <div>
+        {loginModal && <LoginModal />}
+        {signupModal && <SignupModal />}
       </div>
-    </div>
+      {/* <div>Hello World!</div>; */}
+      <Overview />
+      <Footer />
+    </>
   );
 }
+
 export default Home;
