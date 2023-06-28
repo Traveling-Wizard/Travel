@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from '../styling/Home.module.scss';
+// import styles from '../styling/Home.module.scss';
+import Overview from './Home/Overview';
+import Navbar from './Home/Navbar';
 
 function Home(): JSX.Element {
   return (
