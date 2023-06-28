@@ -2,31 +2,35 @@ import jwt, { Secret } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 
-//loads environment variables from .env file
+// Loads environment variables from .env file
 dotenv.config();
 
-//middleware function to authenticate token
+// Middleware function to authenticate token
 export const authenticateToken = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  //incoming auth token is extracted cookies
+  console.log('Attempting to authenticate token');
+  // Incoming auth token is extracted from cookies
   const token = req.cookies.jwtToken;
 
+
+  // If token does not exist, run global error handler
+  if (!token) {
+    return next({
+      log: 'Error in authenticateController middleware',
+      status: 400,
+      message: 'Token does not exist',
+    });
+  }
+
   try {
-    // If token does not exist, run global error handler
-    if (!token) {
-      return next({
-        log: 'Error in authenticateController middleware',
-        status: 400,
-        message: 'Token does not exist',
-      });
-    }
-    //if token is valid
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as Secret);
-    //store decoded token paylod in res.locals.user
-    res.locals.user = decoded;
+    // If token is valid
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as Secret) as { user_id: string };
+    // Store decoded token payload in res.locals
+    res.locals.userToken = decoded;
+
     next();
   } catch (err) {
     return next({
@@ -42,18 +46,16 @@ export const generateToken = (
   res: Response,
   next: NextFunction
 ) => {
-  //obtain username from req body
+  // Obtain user_id from req body
   const { user_id } = req.body;
-
+    console.log(user_id);
   try {
-    // Generate token passing in username and secret
-    const token = jwt.sign(
-      { user_id: user_id },
-      process.env.JWT_SECRET as Secret,
-      {
-        expiresIn: '1h',
-      }
-    );
+    console.log('Attempting to generate token');
+    
+    const token = jwt.sign({ user_id }, process.env.JWT_SECRET as Secret, {
+      expiresIn: '1h',
+    });
+    console.log("creation of token value " + token);
     res.cookie('jwtToken', token, {
       httpOnly: true,
       maxAge: 3600000,
