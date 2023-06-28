@@ -14,7 +14,7 @@ interface CardController {
 const cardController: CardController = {
   getCards: async (req: Request, res: Response, next: NextFunction) => {
     const getCardQuery =
-      'SELECT uc.card_id, uc.points, cc.card_name FROM users AS u INNER JOIN user_cards AS uc ON u.user_id = uc.user_id INNER JOIN card_company AS cc ON uc.card_id = cc.card_id WHERE u.user_id = 1;';
+      'SELECT uc.card_id, uc.points, cc.card_name FROM users AS u INNER JOIN user_cards AS uc ON u.user_id = uc.user_id INNER JOIN card_company AS cc ON uc.card_id = cc.card_id WHERE u.user_id = target_id;';
     try {
       const gotCards = await db.query(getCardQuery);
       const userCards = { 
