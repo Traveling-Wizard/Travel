@@ -10,14 +10,12 @@ interface CardsInterface {
 }
 
 interface Props {
-  // children: ReactNode;
-  // open: boolean;
   closeModal: (boolean: boolean) => void;  
-  // addCard: (card: CardsInterface) => void
-  addCard: string;
+  setCards: (arg: CardsInterface[]) => void;
+  cards: CardsInterface[];
 }
 
-function Modal({ closeModal }: Props) {
+function Modal({ closeModal, setCards, cards }: Props) {
   // const navigate = useNavigate();
   
   const [card, setCard] = useState('Choose a new rewards system...');
@@ -31,18 +29,18 @@ function Modal({ closeModal }: Props) {
 
     setIsPending(true);
 
-    // fetch('http://localhost:??', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(test)
-    // }).then(() => {
-    //   console.log('new card added');
-    //   setIsPending(false);
-    // })
-    setTimeout(() => {
+    fetch('http://localhost:5050/cards', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(test)
+    }).then((response) => response.json()).then(data=>{
+      setCards([...cards, data])
       setIsPending(false);
-      closeModal(false);
-    }, 2000); // Just for testing purposes since I don't want to hook up the backend now.
+      closeModal(false);    
+    }).catch(err=> console.log(err));
+  
+      
+    // Just for testing purposes since I don't want to hook up the backend now.
   }
 
   return(

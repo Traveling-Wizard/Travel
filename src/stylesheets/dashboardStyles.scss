@@ -28,3 +28,48 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.partners_container {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid blue;
+}
+
+.partners_box {
+  // border: 1px dashed green;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  align-items: center;
+  width: 20vw;
+}
+
+.partner_logo {
+  width: 100px;
+  height: auto;
+}
+
+.partner_text {
+  color: darkblue;
+  text-align: center;
+}
+
+.partner__description_layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  transition: opacity .2s, visibility .2s;
+}
+
+.partners_box:hover .partner__description_layer {
+  visibility: visible;
+  opacity: 1;
+}
