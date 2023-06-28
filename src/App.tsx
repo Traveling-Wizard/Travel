@@ -11,6 +11,7 @@ import {
 
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import Dashboard from './pages/Dashboard/Dasboard';
 import React from 'react';
 
 // function App() {
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path='/' element={<Home />} />
+      <Route path='/dashboard' element={<Dashboard />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
