@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../styling/Home.module.scss';
+import styles from '../styling/Modal.module.scss';
 
 function LoginModal(): JSX.Element {
   const navigate = useNavigate();
