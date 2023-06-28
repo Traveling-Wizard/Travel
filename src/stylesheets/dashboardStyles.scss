@@ -92,6 +92,20 @@
   text-align: center;
 }
 
-// .partners_box:hover .partner_description {
-//   transform: translateY(0);
-// }
+.dash-footer {
+  position: relative;
+  width: 8em;
+  top: 30%;
+  right: -500px;
+  animation: dash-footer 10s linear 0s infinite reverse;
+  z-index: 99;
+}
+
+.footer-plane {
+  width: 6em;
+}
+
+@keyframes dash-footer {
+  from{right: -100%;}
+  to {right: 30%}
+}
