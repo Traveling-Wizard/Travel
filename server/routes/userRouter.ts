@@ -9,7 +9,7 @@ userRouter.post(
   userController.getUser,
   authenticateController.generateToken,
   (req: Request, res: Response) => {
-    return res.status(200).json(req.cookies.jwtToken);
+    return res.status(200).json('Done');
   }
 );
 
