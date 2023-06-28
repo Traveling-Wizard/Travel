@@ -57,7 +57,7 @@ const cardController: CardController = {
     const { user_id, card_name, points } = req.body;
     const updateArr = [ user_id, card_name, points ];
     const updateCardQuery =
-      'UPDATE user_cards SET points = $3 FROM card_company WHERE user_cards.user_id = $1 AND user_cards.card_id = card_company.card_id AND card_company.card_name = $2 RETURNING user_cards.*;';
+      'UPDATE user_cards SET points = $3 FROM card_company WHERE user_cards.user_id = $1 AND user_cards.card_id = card_company.card_id AND card_company.card_name = $2 RETURNING *;';
     try {
       const updated = await db.query(updateCardQuery, updateArr);
       const updatedCard = {
